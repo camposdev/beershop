@@ -6,7 +6,7 @@ export const StyledLogo = styled.h1`
   position: relative;
   display: inline-block;
   font-weight: bold;
-  font-size: ${rem(38)};
+  font-size: ${rem(30)};
   line-height: 1;
   letter-spacing: -${em(2)};
   color: ${theme('palette.primary.300')};
@@ -15,6 +15,10 @@ export const StyledLogo = styled.h1`
   padding-left: 0.16em;
   cursor: pointer;
   transition: ${theme('transition')};
+
+  ${theme('breakpoint.sm')} {
+    font-size: ${rem(38)};
+  }
 
   &::before,
   &::after {
