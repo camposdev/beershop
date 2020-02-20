@@ -22,6 +22,7 @@ export const Nav = styled.nav`
 
   ${theme('breakpoint.md')} {
     position: relative;
+    z-index: unset;
     height: auto;
     min-width: auto;
     max-width: 100%;

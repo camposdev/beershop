@@ -14,13 +14,13 @@ export default () => {
   const menuRef = useRef(null);
   const buttonMenuRef = useRef(null);
 
-  const listenClose = (e) => {
-    if (!menuRef.current.contains(e.target) && !buttonMenuRef.current.contains(e.target)) {
-      setOpenMenu(false);
-    }
-  };
-
   useEffect(() => {
+    const listenClose = (e) => {
+      if (!menuRef.current.contains(e.target) && !buttonMenuRef.current.contains(e.target)) {
+        setOpenMenu(false);
+      }
+    };
+
     document.addEventListener('click', listenClose);
     return () => {
       document.removeEventListener('click', listenClose);

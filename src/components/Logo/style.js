@@ -9,7 +9,9 @@ export const StyledLogo = styled.h1`
   font-size: ${rem(30)};
   line-height: 1;
   letter-spacing: -${em(2)};
-  color: ${theme('palette.primary.300')};
+  background: -webkit-linear-gradient(45deg, ${theme('palette.primary.300')}, ${theme('palette.secondary.300')});
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   margin: 0;
   padding-right: 0.3em;
   padding-left: 0.16em;
@@ -29,7 +31,7 @@ export const StyledLogo = styled.h1`
     height: 0.15em;
     left: 0;
     top: -0.1em;
-    background-color: ${theme('palette.primary.300')};
+    background: linear-gradient(to right, ${theme('palette.primary.300')}, ${theme('palette.secondary.300')});
     transition: ${theme('transition')};
   }
 
@@ -39,7 +41,8 @@ export const StyledLogo = styled.h1`
   }
 
   &:hover {
-    color: ${theme('palette.white')};
+    -webkit-text-fill-color: white;
+
     &::before,
     &::after {
       height: 0.7em;
