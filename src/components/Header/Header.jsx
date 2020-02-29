@@ -1,24 +1,23 @@
 import React from 'react';
-import Container from '../Container';
-import { StyledHeader } from './style';
 import Logo from '../Logo';
-import Menu from '../Menu';
-import Flex from '../Flex';
-import ShoppingCart from '../ShoppingCart';
+import Menu from './Menu';
+import ShoppingCart from './ShoppingCart';
+import Search from './Search';
+import { HeaderContainer, StyledHeader, HeaderActions } from './style';
 
 const Header = () => (
-  <StyledHeader>
-    <Container>
-      <Flex justify="space-between" align="center">
+  <>
+    <StyledHeader>
+      <HeaderContainer>
         <Logo />
-
-        <Flex align="center">
-          <Menu />
+        <HeaderActions>
+          <Search />
           <ShoppingCart />
-        </Flex>
-      </Flex>
-    </Container>
-  </StyledHeader>
+        </HeaderActions>
+      </HeaderContainer>
+    </StyledHeader>
+    <Menu />
+  </>
 );
 
 export default Header;

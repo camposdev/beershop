@@ -1,12 +1,17 @@
 import styled, { keyframes } from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { theme, withProp } from 'styled-tools';
-import { rem, transparentize } from 'polished';
+import { theme, ifProp } from 'styled-tools';
+import { rem } from 'polished';
 import { Link } from 'react-router-dom';
 
 export const Wrapper = styled.div`
   position: relative;
-  z-index: 2;
+  z-index: ${ifProp('isOpen', '8', 'inherit')};
+  border-radius: 50%;
+  transition: ${theme('transition')};
+  &:hover {
+    box-shadow: 0 10px 15px -10px ${theme('palette.secondary.100')};
+  }
 `;
 
 export const IconCart = styled(FontAwesomeIcon)`
@@ -35,7 +40,6 @@ export const StyledCart = styled.div`
   justify-content: center;
   width: 50px;
   height: 50px;
-  margin-left: 10px;
   border-radius: 50%;
   background-color: ${theme('palette.primary.300')};
   color: ${theme('palette.white')};

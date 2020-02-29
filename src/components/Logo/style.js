@@ -41,11 +41,11 @@ export const StyledLogo = styled.h1`
   }
 
   &:hover {
-    -webkit-text-fill-color: white;
-
-    &::before,
+    &::before {
+      top: -0.18em;
+    }
     &::after {
-      height: 0.7em;
+      bottom: -0.28em;
     }
   }
 

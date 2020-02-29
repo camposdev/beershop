@@ -1,5 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
-import { normalize, rem } from 'polished'
+import { normalize, rem } from 'polished';
 import { theme } from 'styled-tools';
 
 const GlobalStyles = createGlobalStyle`
@@ -18,6 +18,6 @@ const GlobalStyles = createGlobalStyle`
     background-color: ${(props) => props.theme.palette.primary[300]};
     color: white;
   }
-`
+`;
 
 export default GlobalStyles;

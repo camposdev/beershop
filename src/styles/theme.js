@@ -1,3 +1,5 @@
+import { theme as fromTheme } from 'styled-tools';
+
 const theme = {
   palette: {
     white: '#FFFFFF',
@@ -33,6 +35,6 @@ const theme = {
     xl: '@media(min-width: 1200px)'
   },
   transition: 'all 0.3s ease'
-}
+};
 
 export default theme;

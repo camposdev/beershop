@@ -25,7 +25,7 @@ export default () => {
   }, [openCart]);
 
   return (
-    <Wrapper>
+    <Wrapper isOpen={openCart}>
       <StyledCart ref={cartRef} onClick={() => setOpenCart(!openCart)}>
         <IconCart icon={faShoppingBasket} />
         <Count>3</Count>
