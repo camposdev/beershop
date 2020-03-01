@@ -1,5 +1,3 @@
-import { theme as fromTheme } from 'styled-tools';
-
 const theme = {
   palette: {
     white: '#FFFFFF',

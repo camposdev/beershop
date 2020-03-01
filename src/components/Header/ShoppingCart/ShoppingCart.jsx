@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { faShoppingBasket } from '@fortawesome/free-solid-svg-icons';
-import { Wrapper, StyledCart, IconCart, Count, DropdownCart, ItemCart, ItemCartPhoto, ItemCartTitle, ItemCartPrice, CartLink } from './style';
+import { Wrapper, StyledCart, IconCart, Count, DropdownCart, ItemCart, ItemCartPhoto, ItemCartTitle, ItemCartPrice, CartLink } from './styled';
 
 export default () => {
   const [openCart, setOpenCart] = useState(false);
@@ -66,7 +66,7 @@ export default () => {
             </div>
           </ItemCart>
 
-          <CartLink to="/cart">Ir para o carrinho</CartLink>
+          <CartLink to="/cart" onClick={() => setOpenCart(false)}>Ir para o carrinho</CartLink>
         </DropdownCart>
       )}
     </Wrapper>

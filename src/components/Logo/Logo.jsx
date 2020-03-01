@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { StyledLogo } from './style';
+import { StyledLogo } from './styled';
 
-export default () => (
+export default (props) => (
   <Link to="/">
-    <StyledLogo>BeerShop</StyledLogo>
+    <StyledLogo {...props}>BeerShop</StyledLogo>
   </Link>
 );

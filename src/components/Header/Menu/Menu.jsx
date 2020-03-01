@@ -10,7 +10,7 @@ import {
   AccountMenu,
   IconCloseMenu,
   ButtonMobileMenu
-} from './style';
+} from './styled';
 
 export default () => {
   const [openMenu, setOpenMenu] = useState(false);
@@ -37,16 +37,16 @@ export default () => {
           <ButtonCloseMenu onClick={() => setOpenMenu(false)}>
             Fechar <IconCloseMenu icon={faTimes} />
           </ButtonCloseMenu>
-          <NavItem to="/beer">
+          <NavItem to="/beer" onClick={() => setOpenMenu(false)}>
             <FontAwesomeIcon icon={faBeer} /> Cervejas
           </NavItem>
-          <NavItem to="/kits">
+          <NavItem to="/kits" onClick={() => setOpenMenu(false)}>
             <FontAwesomeIcon icon={faBox} /> Kits
           </NavItem>
-          <NavItem to="/accessories">
+          <NavItem to="/accessories" onClick={() => setOpenMenu(false)}>
             <FontAwesomeIcon icon={faWineBottle} /> Acessórios
           </NavItem>
-          <NavItem to="/sale">
+          <NavItem to="/sale" onClick={() => setOpenMenu(false)}>
             <FontAwesomeIcon icon={faTags} /> Promoções
           </NavItem>
         </Nav>

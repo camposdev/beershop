@@ -3,7 +3,7 @@ import Logo from '../Logo';
 import Menu from './Menu';
 import ShoppingCart from './ShoppingCart';
 import Search from './Search';
-import { HeaderContainer, StyledHeader, HeaderActions } from './style';
+import { HeaderContainer, StyledHeader, HeaderActions } from './styled';
 
 const Header = () => (
   <>

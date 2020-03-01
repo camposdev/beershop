@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
-import { SearchTrigger, Search, SearchIconButton, SearchInput } from './style';
+import { SearchTrigger, Search, SearchIconButton, SearchInput } from './styled';
 
 export default () => {
   const [isFocused, setIsFocused] = useState(false);
