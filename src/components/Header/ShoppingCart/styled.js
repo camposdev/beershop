@@ -120,13 +120,14 @@ export const ItemCartPhoto = styled.div`
 `;
 
 export const ItemCartTitle = styled.h4`
-  font-size: ${rem(12)};
-  font-weight: bold;
+  font-size: ${rem(13)};
+  font-weight: normal;
   margin: 0;
 `;
 
 export const ItemCartPrice = styled.span`
   font-size: ${rem(12)};
+  font-weight: bold;
   color: ${theme('palette.primary.300')};
 `;
 
@@ -138,9 +139,11 @@ export const CartLink = styled(Link)`
   color: white;
   text-align: center;
   font-size: ${rem(12)};
+  text-transform: uppercase;
   font-weight: bold;
+  letter-spacing: ${rem(1)};
   text-decoration: none;
-  padding: 10px 0;
+  padding: 15px 0;
   border-radius: 0 0 8px 8px;
   transition: ${theme('transition')};
 

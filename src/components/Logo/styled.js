@@ -25,7 +25,6 @@ export const StyledLogo = styled.h1`
   &::before,
   &::after {
     content: "";
-    z-index: -1;
     position: absolute;
     width: 100%;
     height: 0.15em;

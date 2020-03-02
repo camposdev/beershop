@@ -66,7 +66,7 @@ export default () => {
             </div>
           </ItemCart>
 
-          <CartLink to="/cart" onClick={() => setOpenCart(false)}>Ir para o carrinho</CartLink>
+          <CartLink to="/cart" onClick={() => setOpenCart(false)}>Meu carrinho</CartLink>
         </DropdownCart>
       )}
     </Wrapper>

@@ -10,7 +10,7 @@ const Button = ({ icon, children, ...props }) => (
 );
 
 Button.propTypes = {
-  icon: PropTypes.string,
+  icon: PropTypes.oneOfType([PropTypes.object]),
   large: PropTypes.bool,
   block: PropTypes.bool
 };

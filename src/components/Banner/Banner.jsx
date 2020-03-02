@@ -3,14 +3,18 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { StyledBanner } from './styled';
 
-const Banner = ({ img, ...props }) => (
+const Banner = ({ img, imgMobile, ...props }) => (
   <StyledBanner>
-    <img src={img} {...props} />
+    <picture>
+      <source srcSet={img} media="(min-width: 768px)" />
+      <img src={imgMobile} {...props} />
+    </picture>
   </StyledBanner>
 );
 
 Banner.propTypes = {
-  img: PropTypes.string.isRequired
+  img: PropTypes.string.isRequired,
+  imgMobile: PropTypes.string.isRequired
 };
 
 export default Banner;

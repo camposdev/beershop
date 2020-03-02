@@ -4,6 +4,9 @@ import { rem } from 'polished';
 
 export const Card = styled.div`
   align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   background-color: ${theme('palette.white')};
   border-radius: 8px;
   padding: 15px;
@@ -32,6 +35,10 @@ export const Title = styled.h3`
   text-align: center;
   color: ${theme('palette.dark.300')};
   margin: 0 0 10px;
+
+  ${theme('breakpoint.sm')} {
+    font-size: ${rem(16)};
+  }
 `;
 
 export const Price = styled.div`
@@ -40,4 +47,8 @@ export const Price = styled.div`
   text-align: center;
   color: ${theme('palette.primary.300')};
   margin: 0 0 15px;
+
+  ${theme('breakpoint.sm')} {
+    font-size: ${rem(24)};
+  }
 `;
