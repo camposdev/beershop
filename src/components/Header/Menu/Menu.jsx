@@ -38,16 +38,16 @@ export default () => {
             Fechar <IconCloseMenu icon={faTimes} />
           </ButtonCloseMenu>
           <NavItem to="/beer" onClick={() => setOpenMenu(false)}>
-            <FontAwesomeIcon icon={faBeer} /> Cervejas
+            <FontAwesomeIcon icon={faBeer} fixedWidth /> Cervejas
           </NavItem>
           <NavItem to="/kits" onClick={() => setOpenMenu(false)}>
-            <FontAwesomeIcon icon={faBox} /> Kits
+            <FontAwesomeIcon icon={faBox} fixedWidth /> Kits
           </NavItem>
           <NavItem to="/accessories" onClick={() => setOpenMenu(false)}>
-            <FontAwesomeIcon icon={faWineBottle} /> Acessórios
+            <FontAwesomeIcon icon={faWineBottle} fixedWidth /> Acessórios
           </NavItem>
           <NavItem to="/sale" onClick={() => setOpenMenu(false)}>
-            <FontAwesomeIcon icon={faTags} /> Promoções
+            <FontAwesomeIcon icon={faTags} fixedWidth /> Promoções
           </NavItem>
         </Nav>
 
