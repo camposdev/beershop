@@ -14,6 +14,7 @@ import Footer from './components/Footer';
 import Products from './pages/Products';
 import Product from './pages/Product';
 import Store from './context/Store';
+import Cart from './pages/Cart';
 
 const App = () => (
   <ThemeProvider theme={theme}>
@@ -28,6 +29,7 @@ const App = () => (
           <Route path="/accessories" component={Products} />
           <Route path="/sale" component={Products} />
           <Route path="/product/:id" component={Product} />
+          <Route path="/cart" component={Cart} />
           <Route path="*">
             <Redirect to="/" />
           </Route>

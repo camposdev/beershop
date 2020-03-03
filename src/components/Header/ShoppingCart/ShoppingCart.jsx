@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect, useContext } from 'react';
 import { faShoppingBasket } from '@fortawesome/free-solid-svg-icons';
 import numeral from 'numeral';
 import { Context } from '../../../context/Store';
+import mergeDuplicates from '../../../utils/mergeDuplicates';
 import {
   Wrapper,
   StyledCart,
@@ -19,9 +20,10 @@ import {
 
 export default () => {
   const [openCart, setOpenCart] = useState(false);
+  const [products, setProducts] = useState([]);
   const dropdownRef = useRef(null);
   const cartRef = useRef(null);
-  const [cart] = useContext(Context);
+  const [store] = useContext(Context);
 
   useEffect(() => {
     const listenClose = (e) => {
@@ -40,17 +42,21 @@ export default () => {
     };
   }, [openCart]);
 
+  useEffect(() => {
+    setProducts(mergeDuplicates(store.cart, 'id'));
+  }, [store]);
+
   return (
     <Wrapper isOpen={openCart}>
       <StyledCart ref={cartRef} onClick={() => setOpenCart(!openCart)}>
         <IconCart icon={faShoppingBasket} />
-        <Count>{cart.products.length}</Count>
+        <Count>{products.length}</Count>
       </StyledCart>
 
       {openCart && (
         <DropdownCart ref={dropdownRef}>
           <WrapperItems>
-            {cart.products.length > 0 ? cart.products.map((item) => (
+            {products.length > 0 ? products.map((item) => (
               <ItemCart
                 key={item.id}
                 to={`/product/${item.id}`}
@@ -62,7 +68,10 @@ export default () => {
 
                 <div>
                   <ItemCartTitle>{item.name}</ItemCartTitle>
-                  <ItemCartPrice>{numeral(item.price).format('$0,0.00')}</ItemCartPrice>
+                  <ItemCartPrice>
+                    {item.count > 1 && <span>x{item.count}</span>}
+                    {numeral(item.price * item.count).format('$0,0.00')}
+                  </ItemCartPrice>
                 </div>
               </ItemCart>
             )) : (

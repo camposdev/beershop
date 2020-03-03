@@ -3,12 +3,12 @@ const Reducer = (state, action) => {
     case 'ADD_PRODUCT_CART':
       return {
         ...state,
-        products: [...state.products, action.payload]
+        cart: [...state.cart, action.payload]
       };
     case 'REMOVE_PRODUCT_CART':
       return {
         ...state,
-        products: state.products.filter((item) => item.id !== action.payload)
+        cart: state.cart.filter((item) => item.id !== action.payload)
       };
     default:
       return state;

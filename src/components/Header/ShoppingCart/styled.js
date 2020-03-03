@@ -144,6 +144,12 @@ export const ItemCartPrice = styled.span`
   font-size: ${rem(12)};
   font-weight: bold;
   color: ${theme('palette.primary.300')};
+
+  span {
+    font-weight: bold;
+    margin-right: 5px;
+    color: ${theme('palette.dark.200')};
+  }
 `;
 
 export const ItemCartEmpty = styled.div`

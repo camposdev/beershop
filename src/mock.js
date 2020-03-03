@@ -12,21 +12,21 @@ export const products = [
     price: 124.9,
     photo: '/products/2.jpg',
     description: '6 Pack Sierra Nevada Pale Ale contendo: 6 Unidades da Cerveja Sierra Nevada Pale Ale 355 ml   Sierra Nevada Pale Ale, é uma interpretação deliciosa de um estilo clássico.De coloração âmbar profundo, possui creme branco de boa formação e estabilidade. Generosas quantidades de lúpulo são utilizados na fabricação, e trazem aromas de grapefruit, limão e cassis. Levemente frutada e refrescante, o amargor do lúpulo é muito bem sustentado pelo dulçor do malte. Medalhas de Ouro: Great American Beer Festival (American Pale Ale: 1995, 1994, 1993; Classic English Pale Ale: 1992; Pale Ale: 1990, 1989, 1987) Estilo: American Pale Ale.  Teor alcoólico: 5,6%   Volume: 355ml',
-    featured: false
+    featured: true
   }, {
     id: 3,
     name: 'Copo Delirium Tremens 330 ml',
     price: 69.9,
     photo: '/products/3.jpg',
     description: 'Copo modelo tulipa da Cerveja Delirium Tremens  - 330 ml Na Bélgica,cada cerveja tem o seu copo próprio. O design e o formato de cada copo tem funcão em relação à espuma e tem o objetivo de desprender o bouquet e aroma do estilo desta cerveja em específico, permitindo que você possa apreciar o que uma Delirium Tremens tem de melhor. Isso influi consideravelmente nos prazeres gustativos que você pode obter de uma cerveja.   TULIPA: Ideal para cervejas que possuem bastante creme, como as Strong Ales belgas. O desenho é baixo e elegante, permitindo também observar a evolução da espuma. A verdadeira Tulipa parece mais com uma taça de conhaque, porém com a boca do copo virada para fora.',
-    featured: true
+    featured: false
   }, {
     id: 4,
     name: 'Bodebrown Hair of the Bode - 330 ml',
     price: 26.9,
     photo: '/products/4.jpg',
     description: 'Bodebrown Hair of the Bode é uma Barley Wine colaborativa e inspirada na cervejaria americana Hair of the Dog (especializada em cervejas Vintages e Strong Ales), com a receita criada pelo cervejeiro e fundador Alan Sprints. Faz parte da "Wood Aged Series" em barril de carvalho americano de vinho Carmenere e envelhecida por 12 meses na garrafa. Com 50 IBUs, apresenta notas de malte, caramelo, frutas secas e leve vinho do porto e cereja, com potencial de guarda para os próximos 20 anos. Estilo: Barley Wine Teor Alcoólico:11,7 % Volume: 330 ml',
-    featured: true
+    featured: false
   }, {
     id: 5,
     name: 'Kit Delirium Tremens 750 ml + 2 Copos',
@@ -75,7 +75,7 @@ export const products = [
     price: 19.9,
     photo: '/products/11.jpg',
     description: 'A Cerveja Americana New Belgium Fat Tire Amber Ale é uma cerveja de coloração âmbar, corpo médio e espuma de boa formação. Apresenta notas de malte tostado e caramelo perfeitamente equilibradas com o frescor do lúpulo. Estilo: Amber Ale Teor Alcoólico: 5,2% Volume: 355 ml',
-    featured: false
+    featured: true
   }, {
     id: 12,
     name: 'Kit Tripel Karmeliet 1 Garrafa 750 ml + 2 Copos',
