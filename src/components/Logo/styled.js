@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { theme } from 'styled-tools';
 import { em, rem } from 'polished';
 
-export const StyledLogo = styled.h1`
+export const StyledLogo = styled.h2`
   position: relative;
   display: inline-block;
   font-weight: bold;

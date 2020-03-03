@@ -5,6 +5,7 @@ import ProductCard from '../../components/ProductCard/ProductCard';
 import Heading from '../../components/Heading';
 import ProductsGrid from '../../components/ProductsGrid/ProductsGrid';
 import { GridBanners } from './styled';
+import Loading from '../../components/Loading';
 
 const Home = () => {
   const [featuredProducts, setFeaturedProducts] = useState([]);
@@ -16,8 +17,10 @@ const Home = () => {
       .then((res) => {
         const featured = res.products.slice(0, 4);
         const others = res.products.slice(4, 12);
-        setFeaturedProducts(featured);
-        setOtherProducts(others);
+        setTimeout(() => {
+          setFeaturedProducts(featured);
+          setOtherProducts(others);
+        }, 1000);
       });
   }, []);
 
@@ -29,22 +32,26 @@ const Home = () => {
         alt="Ofertas do dia"
       />
       <Heading>Destaques</Heading>
-      <ProductsGrid>
-        {featuredProducts.map((product) => (
-          <ProductCard key={product.id} {...product} />
-        ))}
-      </ProductsGrid>
+      {featuredProducts.length ? (
+        <ProductsGrid>
+          {featuredProducts.map((product) => (
+            <ProductCard key={product.id} {...product} />
+          ))}
+        </ProductsGrid>
+      ) : <Loading />}
       <GridBanners>
         <img src="/banners/banner1.jpg" alt="Camisetas" />
         <img src="/banners/banner2.jpg" alt="Elvis Juice" />
         <img src="/banners/banner3.jpg" alt="Hocus Pocus" />
       </GridBanners>
       <Heading>Outros produtos</Heading>
-      <ProductsGrid>
-        {otherProducts.map((product) => (
-          <ProductCard key={product.id} {...product} />
-        ))}
-      </ProductsGrid>
+      {otherProducts.length ? (
+        <ProductsGrid>
+          {otherProducts.map((product) => (
+            <ProductCard key={product.id} {...product} />
+          ))}
+        </ProductsGrid>
+      ) : <Loading />}
     </Container>
   );
 };

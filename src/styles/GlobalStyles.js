@@ -6,8 +6,9 @@ const GlobalStyles = createGlobalStyle`
   ${normalize()}
   body {
     font-family: 'Open Sans', sans-serif;
-    font-size: ${rem(16)};
-    color: ${theme('palette.dark.500')};
+    font-size: ${rem(14)};
+    color: ${theme('palette.dark.300')};
+    line-height: 1.5;
   }
 
   * {
