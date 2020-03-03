@@ -6,22 +6,21 @@ import Heading from '../../components/Heading';
 import ProductsGrid from '../../components/ProductsGrid/ProductsGrid';
 import { GridBanners } from './styled';
 import Loading from '../../components/Loading';
+import { getProducts } from '../../services/api';
 
 const Home = () => {
   const [featuredProducts, setFeaturedProducts] = useState([]);
   const [otherProducts, setOtherProducts] = useState([]);
 
   useEffect(() => {
-    fetch('/api.json')
-      .then((res) => res.json())
-      .then((res) => {
-        const featured = res.products.slice(0, 4);
-        const others = res.products.slice(4, 12);
-        setTimeout(() => {
-          setFeaturedProducts(featured);
-          setOtherProducts(others);
-        }, 1000);
-      });
+    const fetchProducts = async () => {
+      const res = await getProducts();
+      const featured = res.filter((item) => item.featured);
+      const others = res.filter((item) => !item.featured);
+      setFeaturedProducts(featured);
+      setOtherProducts(others);
+    };
+    fetchProducts();
   }, []);
 
   return (

@@ -9,6 +9,7 @@ export const ProductGrid = styled.div`
 
   ${theme('breakpoint.md')} {
     flex-direction: row;
+    margin: 50px 0 80px;
   }
 `;
 

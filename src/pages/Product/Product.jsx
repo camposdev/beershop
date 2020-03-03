@@ -1,58 +1,76 @@
-import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import React, { useEffect, useState, useContext } from 'react';
+import { useParams, useHistory } from 'react-router-dom';
 import numeral from 'numeral';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import Container from '../../components/Container';
 import Button from '../../components/Button';
 import Heading from '../../components/Heading';
-import { ProductGrid, Photo, Title, ProductInfo, PriceBox, Price, Installments } from './styled';
 import ProductsGrid from '../../components/ProductsGrid/ProductsGrid';
 import ProductCard from '../../components/ProductCard/ProductCard';
 import Loading from '../../components/Loading';
+import { getProducts, getProductById } from '../../services/api';
+import shuffle from '../../utils/shuffle';
+import { Context } from '../../context/Store';
+import { ProductGrid, Photo, Title, ProductInfo, PriceBox, Price, Installments } from './styled';
 
 const Product = () => {
   const [product, setProduct] = useState({});
+  const [loading, setLoading] = useState(false);
   const [similarProducts, setSimilarProducts] = useState([]);
   const { id } = useParams();
+  const [, dispatch] = useContext(Context);
+  const history = useHistory();
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    fetch('/api.json')
-      .then((res) => res.json())
-      .then((res) => {
-        const current = res.products.filter((item) => item.id === Number(id));
-        setProduct(current[0]);
-        const similar = res.products.filter((item) => item.id !== Number(id)).slice(0, 4);
-        setTimeout(() => {
-          setSimilarProducts(similar);
-        }, 1000);
-      });
+    setLoading(true);
+
+    (async () => {
+      const response = await getProductById(id);
+      setProduct(response);
+      setLoading(false);
+    })();
+
+    (async () => {
+      const response = await getProducts();
+      const shuffleList = shuffle(response);
+      const similarList = shuffleList.filter((item) => item.id !== Number(id)).slice(0, 4);
+      setSimilarProducts(similarList);
+      setLoading(false);
+    })();
   }, [id]);
+
+  const addProductCart = () => {
+    dispatch({ type: 'ADD_PRODUCT_CART', payload: product });
+    history.push('/cart');
+  };
 
   return (
     <Container>
-      <ProductGrid>
-        <Photo>
-          <img src={product.photo} alt={product.name} />
-        </Photo>
-        <ProductInfo>
-          <Title>{product.name}</Title>
-          <PriceBox>
-            <Price>
-              {numeral(product.price).format('$0,0.00')}
-            </Price>
-            <Installments>
-              em até <span>12x</span> de <span>{numeral(product.price / 12).format('$0,0.00')}</span>
-            </Installments>
-          </PriceBox>
-          <Button icon={faShoppingCart} block large>Comprar</Button>
-          <Heading>Descrição</Heading>
-          <p>{product.description}</p>
-        </ProductInfo>
-      </ProductGrid>
+      {!loading ? (
+        <ProductGrid>
+          <Photo>
+            <img src={product.photo} alt={product.name} />
+          </Photo>
+          <ProductInfo>
+            <Title>{product.name}</Title>
+            <PriceBox>
+              <Price>
+                {numeral(product.price).format('$0,0.00')}
+              </Price>
+              <Installments>
+                em até <span>12x</span> de <span>{numeral(product.price / 12).format('$0,0.00')}</span>
+              </Installments>
+            </PriceBox>
+            <Button icon={faShoppingCart} block large onClick={addProductCart}>Comprar</Button>
+            <Heading>Descrição</Heading>
+            <p>{product.description}</p>
+          </ProductInfo>
+        </ProductGrid>
+      ) : <Loading />}
 
       <Heading>Produtos similares</Heading>
-      {similarProducts.length ? (
+      {!loading ? (
         <ProductsGrid>
           {similarProducts.map((item) => (
             <ProductCard key={item.id} {...item} />

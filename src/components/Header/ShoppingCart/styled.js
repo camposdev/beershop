@@ -20,11 +20,11 @@ export const IconCart = styled(FontAwesomeIcon)`
 
 export const Count = styled.div`
   position: absolute;
-  top: 0;
-  right: 0;
+  top: -2px;
+  right: -2px;
   background-color: ${theme('palette.white')};
   border: 2px solid ${theme('palette.secondary.300')};
-  padding: 1px 5px;
+  padding: 0 5px;
   border-radius: 10px;
   font-size: ${rem(12)};
   font-weight: bold;
@@ -89,18 +89,29 @@ export const DropdownCart = styled.div`
   right: 0;
   margin-top: 10px;
   padding: 10px 0 0;
-  min-width: 200px;
+  min-width: 230px;
   background-color: ${theme('palette.white')};
   border-radius: 8px;
   box-shadow: 0 3px 12px rgba(0,0,0,0.2);
   animation: 0.3s ${slideIn} ease-out;
 `;
 
-export const ItemCart = styled.div`
+export const WrapperItems = styled.div`
+  max-height: 250px;
+  overflow: auto;
+`;
+
+export const ItemCart = styled(Link)`
   display: flex;
   align-items: center;
   padding: 5px 10px;
   border-top: 1px solid ${theme('palette.dark.50')};
+  text-decoration: none;
+  transition: ${theme('transition')};
+
+  &:hover {
+    background-color: ${theme('palette.dark.50')};
+  }
 
   &:first-of-type {
     border-top: 0;
@@ -109,6 +120,7 @@ export const ItemCart = styled.div`
 
 export const ItemCartPhoto = styled.div`
   margin-right: 5px;
+  flex-shrink: 0;
   width: 40px;
   height: 40px;
   background-color: ${theme('palette.dark.50')};
@@ -116,12 +128,15 @@ export const ItemCartPhoto = styled.div`
 
   img {
     border-radius: 4px;
+    width: 100%;
   }
 `;
 
 export const ItemCartTitle = styled.h4`
-  font-size: ${rem(13)};
+  font-size: ${rem(12)};
+  color: ${theme('palette.dark.200')};
   font-weight: normal;
+  line-height: 1.2;
   margin: 0;
 `;
 
@@ -129,6 +144,13 @@ export const ItemCartPrice = styled.span`
   font-size: ${rem(12)};
   font-weight: bold;
   color: ${theme('palette.primary.300')};
+`;
+
+export const ItemCartEmpty = styled.div`
+  text-align: center;
+  padding: 15px;
+  font-size: ${rem(14)};
+  color: ${theme('palette.dark.200')};
 `;
 
 export const CartLink = styled(Link)`
@@ -143,7 +165,7 @@ export const CartLink = styled(Link)`
   font-weight: bold;
   letter-spacing: ${rem(1)};
   text-decoration: none;
-  padding: 15px 0;
+  padding: 10px 0;
   border-radius: 0 0 8px 8px;
   transition: ${theme('transition')};
 

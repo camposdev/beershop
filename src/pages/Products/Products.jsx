@@ -3,16 +3,18 @@ import Container from '../../components/Container';
 import Heading from '../../components/Heading';
 import ProductsGrid from '../../components/ProductsGrid/ProductsGrid';
 import ProductCard from '../../components/ProductCard/ProductCard';
+import { getProducts } from '../../services/api';
+import shuffle from '../../utils/shuffle';
 
 const Products = () => {
   const [productsList, setProductsList] = useState([]);
+
   useEffect(() => {
-    fetch('/api.json')
-      .then((res) => res.json())
-      .then((res) => {
-        const { products } = res;
-        setProductsList(products);
-      });
+    (async () => {
+      const response = await getProducts();
+      const products = shuffle(response);
+      setProductsList(products);
+    })();
   }, []);
 
   return (
