@@ -1,3 +1,5 @@
+import { updateLocalCart } from '../services/shoppingCart';
+
 const updateCartList = (items, newItem) => {
   let isDuplicate = false;
   items.forEach((item) => {
@@ -16,15 +18,28 @@ const updateCartList = (items, newItem) => {
   }
 
   newItem.count = 1;
-  return [...items, newItem];
+  const finalList = [...items, newItem];
+  updateLocalCart(finalList);
+  return finalList;
 };
 
-const updateCountCart = (items, updatedItem) => items.map((item) => {
-  if (item.id === updatedItem.id) {
-    item.count = updatedItem.value;
-  }
-  return item;
-});
+const updateCountCart = (items, updatedItem) => {
+  const updatedCount = items.map((item) => {
+    if (item.id === updatedItem.id) {
+      item.count = updatedItem.value;
+    }
+    return item;
+  });
+
+  updateLocalCart(updatedCount);
+  return updatedCount;
+};
+
+const removeProductCart = (items, removedItem) => {
+  const updatedList = items.filter((item) => item.id !== removedItem);
+  updateLocalCart(updatedList);
+  return updatedList;
+};
 
 const Reducer = (state, action) => {
   switch (action.type) {
@@ -41,7 +56,7 @@ const Reducer = (state, action) => {
     case 'REMOVE_PRODUCT_CART':
       return {
         ...state,
-        cart: state.cart.filter((item) => item.id !== action.payload)
+        cart: removeProductCart(state.cart, action.payload)
       };
     default:
       return state;

@@ -13,7 +13,7 @@ export const StyledButton = styled.button`
   flex-wrap: nowrap;
   background: none;
   border: none;
-  padding: 0 ${rem(16)};
+  padding: 0 ${ifProp('large', '30px', '16px')};
   border-radius: 30px;
   background-color: ${theme('palette.primary.300')};
   color: ${theme('palette.white')};

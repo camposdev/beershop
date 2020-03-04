@@ -1,8 +1,9 @@
 import React, { createContext, useReducer } from 'react';
 import Reducer from './Reducer';
+import { getLocalCart } from '../services/shoppingCart';
 
 const initialState = {
-  cart: []
+  cart: getLocalCart() || []
 };
 
 const Store = ({ children }) => {
