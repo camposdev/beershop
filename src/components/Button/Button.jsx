@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { StyledButton } from './styled';
 
 const Button = ({ icon, children, ...props }) => (
-  <StyledButton {...props}>
+  <StyledButton {...props} hasChildren={!!children}>
     {icon && <FontAwesomeIcon icon={icon} />} {children}
   </StyledButton>
 );

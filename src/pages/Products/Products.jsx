@@ -4,27 +4,29 @@ import Heading from '../../components/Heading';
 import ProductsGrid from '../../components/ProductsGrid/ProductsGrid';
 import ProductCard from '../../components/ProductCard/ProductCard';
 import { getProducts } from '../../services/api';
-import shuffle from '../../utils/shuffle';
+import Loading from '../../components/Loading';
 
 const Products = () => {
   const [productsList, setProductsList] = useState([]);
 
   useEffect(() => {
-    (async () => {
+    const fetchProducts = async () => {
       const response = await getProducts();
-      const products = shuffle(response);
-      setProductsList(products);
-    })();
+      setProductsList(response);
+    };
+    fetchProducts();
   }, []);
 
   return (
     <Container>
       <Heading>Produtos</Heading>
-      <ProductsGrid>
-        {productsList.map((product) => (
-          <ProductCard key={product.id} {...product} />
-        ))}
-      </ProductsGrid>
+      {productsList.length > 0 ? (
+        <ProductsGrid>
+          {productsList.map((product) => (
+            <ProductCard key={product.id} {...product} />
+          ))}
+        </ProductsGrid>
+      ) : <Loading />}
     </Container>
   );
 };

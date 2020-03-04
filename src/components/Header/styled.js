@@ -1,8 +1,10 @@
 import styled from 'styled-components';
+import { theme } from 'styled-tools';
 import Container from '../Container';
 
 export const StyledHeader = styled.header`
   padding: 30px 0;
+  background-color: ${theme('palette.white')};
 `;
 
 export const HeaderContainer = styled(Container)`

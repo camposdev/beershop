@@ -7,13 +7,13 @@ export const StyledButton = styled.button`
   z-index: 1;
   display: inline-flex;
   width: ${ifProp('block', '100%', 'auto')};
+  height: ${ifProp('large', '50px', '40px')};
   align-items: center;
   justify-content: center;
   flex-wrap: nowrap;
   background: none;
   border: none;
   padding: 0 ${rem(16)};
-  height: ${ifProp('large', '50px', '40px')};
   border-radius: 30px;
   background-color: ${theme('palette.primary.300')};
   color: ${theme('palette.white')};
@@ -49,7 +49,7 @@ export const StyledButton = styled.button`
   }
 
   svg {
-    margin-right: 10px;
+    margin-right: ${({ hasChildren }) => hasChildren && '10px'};
     font-size: ${rem(14)};
   }
 `;

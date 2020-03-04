@@ -32,6 +32,7 @@
     "no-unused-expressions": ["error", { "allowTaggedTemplates": true }],
     "object-curly-newline": "off",
     "comma-dangle": "off",
-    "react/prop-types": [2, { "ignore": ["children", "className", "style"] }]
+    "react/prop-types": [2, { "ignore": ["children", "className", "style"] }],
+    "no-param-reassign": "off"
   }
 }

@@ -2,7 +2,6 @@ import React, { useState, useRef, useEffect, useContext } from 'react';
 import { faShoppingBasket } from '@fortawesome/free-solid-svg-icons';
 import numeral from 'numeral';
 import { Context } from '../../../context/Store';
-import mergeDuplicates from '../../../utils/mergeDuplicates';
 import {
   Wrapper,
   StyledCart,
@@ -20,7 +19,6 @@ import {
 
 export default () => {
   const [openCart, setOpenCart] = useState(false);
-  const [products, setProducts] = useState([]);
   const dropdownRef = useRef(null);
   const cartRef = useRef(null);
   const [store] = useContext(Context);
@@ -42,21 +40,17 @@ export default () => {
     };
   }, [openCart]);
 
-  useEffect(() => {
-    setProducts(mergeDuplicates(store.cart, 'id'));
-  }, [store]);
-
   return (
     <Wrapper isOpen={openCart}>
       <StyledCart ref={cartRef} onClick={() => setOpenCart(!openCart)}>
         <IconCart icon={faShoppingBasket} />
-        <Count>{products.length}</Count>
+        <Count>{store.cart.length}</Count>
       </StyledCart>
 
       {openCart && (
         <DropdownCart ref={dropdownRef}>
           <WrapperItems>
-            {products.length > 0 ? products.map((item) => (
+            {store.cart.length > 0 ? store.cart.map((item) => (
               <ItemCart
                 key={item.id}
                 to={`/product/${item.id}`}
