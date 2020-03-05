@@ -1,15 +1,17 @@
 import styled from 'styled-components';
-import { theme } from 'styled-tools';
+import { theme, ifProp } from 'styled-tools';
 import { rem } from 'polished';
 
 export const StyledHeading = styled.h2`
   position: relative;
-  font-size: ${rem(30)};
-  letter-spacing: -${rem(2)};
-  color: ${theme('palette.primary.300')};
+  font-size: ${ifProp('sub', rem(16), rem(30))};
+  letter-spacing: -${ifProp('sub', rem(1), rem(2))};
+  text-transform: ${ifProp('sub', 'uppercase', 'inherit')};
+  color: ${ifProp('sub', theme('palette.dark.100'), theme('palette.primary.300'))};
   
   &::after {
     content: "";
+    display: ${ifProp('sub', 'none', 'block')};
     position: absolute;
     width: ${rem(42)};
     height: ${rem(4)};

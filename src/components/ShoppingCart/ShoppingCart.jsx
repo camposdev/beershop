@@ -1,19 +1,13 @@
 import React, { useState, useRef, useEffect, useContext } from 'react';
 import { faShoppingBasket } from '@fortawesome/free-solid-svg-icons';
-import numeral from 'numeral';
-import { Context } from '../../../context/Store';
+import { Context } from '../../context/Store';
+import ShoppingCartList from './ShoppingCartList';
 import {
   Wrapper,
   StyledCart,
   IconCart,
   Count,
   DropdownCart,
-  WrapperItems,
-  ItemCart,
-  ItemCartPhoto,
-  ItemCartTitle,
-  ItemCartPrice,
-  ItemCartEmpty,
   CartLink
 } from './styled';
 
@@ -49,30 +43,7 @@ export default () => {
 
       {openCart && (
         <DropdownCart ref={dropdownRef}>
-          <WrapperItems>
-            {store.cart.length > 0 ? store.cart.map((item) => (
-              <ItemCart
-                key={item.id}
-                to={`/product/${item.id}`}
-                onClick={() => setOpenCart(false)}
-              >
-                <ItemCartPhoto>
-                  <img src={item.photo} alt={item.name} />
-                </ItemCartPhoto>
-
-                <div>
-                  <ItemCartTitle>{item.name}</ItemCartTitle>
-                  <ItemCartPrice>
-                    {item.count > 1 && <span>x{item.count}</span>}
-                    {numeral(item.price * item.count).format('$0,0.00')}
-                  </ItemCartPrice>
-                </div>
-              </ItemCart>
-            )) : (
-              <ItemCartEmpty>Carrinho vazio!</ItemCartEmpty>
-            )}
-          </WrapperItems>
-
+          <ShoppingCartList onClose={() => setOpenCart(false)} />
           <CartLink to="/cart" onClick={() => setOpenCart(false)}>Meu carrinho</CartLink>
         </DropdownCart>
       )}

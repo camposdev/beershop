@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { faTimes, faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import { faTrash, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import numeral from 'numeral';
 import { useHistory } from 'react-router-dom';
 import Container from '../../components/Container';
@@ -28,7 +28,9 @@ const Cart = () => {
 
   useEffect(() => {
     if (store.cart.length > 0) {
-      const sumTotal = store.cart.reduce((prevVal, item) => prevVal + (item.price * item.count), 0);
+      const sumTotal = store.cart.reduce(
+        (prevVal, item) => prevVal + (item.unit_price * item.quantity), 0
+      );
       setTotalPrice(sumTotal);
     }
   }, [store]);
@@ -47,25 +49,25 @@ const Cart = () => {
       {store.cart.length > 0 ? store.cart.map((item) => (
         <CardCart key={item.id}>
           <CardCartPhoto>
-            <img src={item.photo} alt={item.name} width="120" />
+            <img src={item.photo} alt={item.title} width="120" />
           </CardCartPhoto>
           <CardCartInfo>
-            <CardCartTitle>{item.name}</CardCartTitle>
+            <CardCartTitle>{item.title}</CardCartTitle>
             <CardCartPrices>
               <CardCartQtd>
-                <TextField type="number" min="1" max="10" value={item.count} onChange={(e) => handleQtdChange(e.target.value, item)} />
+                <TextField type="number" min="1" max="10" value={item.quantity} onChange={(e) => handleQtdChange(e.target.value, item)} />
               </CardCartQtd>
               <CardCartValue secondary>
                 <h5>Unitário</h5>
-                {numeral(item.price).format('$0,0.00')}
+                {numeral(item.unit_price).format('$0,0.00')}
               </CardCartValue>
               <CardCartValue>
                 <h5>Total</h5>
-                {numeral(item.price * item.count).format('$0,0.00')}
+                {numeral(item.unit_price * item.quantity).format('$0,0.00')}
               </CardCartValue>
             </CardCartPrices>
           </CardCartInfo>
-          <CardCartAction onClick={() => removeItem(item)} icon={faTimes} />
+          <CardCartAction secondary onClick={() => removeItem(item)} icon={faTrash} />
         </CardCart>
       )) : <EmptyState>Seu carrinho está vazio</EmptyState>}
 

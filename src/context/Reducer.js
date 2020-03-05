@@ -11,13 +11,13 @@ const updateCartList = (items, newItem) => {
   if (isDuplicate) {
     return items.map((item) => {
       if (item.id === newItem.id) {
-        item.count = Number(item.count) + 1;
+        item.quantity = Number(item.quantity) + 1;
       }
       return item;
     });
   }
 
-  newItem.count = 1;
+  newItem.quantity = 1;
   const finalList = [...items, newItem];
   updateLocalCart(finalList);
   return finalList;
@@ -26,7 +26,7 @@ const updateCartList = (items, newItem) => {
 const updateCountCart = (items, updatedItem) => {
   const updatedCount = items.map((item) => {
     if (item.id === updatedItem.id) {
-      item.count = updatedItem.value;
+      item.quantity = updatedItem.value;
     }
     return item;
   });

@@ -7,11 +7,11 @@ import Button from '../Button/Button';
 import { Card, Image, Title, Price } from './styled';
 import { Context } from '../../context/Store';
 
-const ProductCard = ({ id, photo, name, price, ...props }) => {
+const ProductCard = ({ id, photo, title, unit_price, ...props }) => {
   const [, dispatch] = useContext(Context);
 
   const addProductCart = () => {
-    const product = { id, photo, name, price };
+    const product = { id, photo, title, unit_price };
     dispatch({ type: 'ADD_PRODUCT_CART', payload: product });
   };
 
@@ -20,10 +20,10 @@ const ProductCard = ({ id, photo, name, price, ...props }) => {
       <Card {...props}>
         <Link to={`/product/${id}`}>
           <Image src={photo} />
-          <Title>{name}</Title>
-          <Price>{numeral(price).format('$0,0.00')}</Price>
+          <Title>{title}</Title>
+          <Price>{numeral(unit_price).format('$0,0.00')}</Price>
         </Link>
-        <Button block icon={faShoppingCart} onClick={addProductCart}>Adicionar</Button>
+        <Button secondary block icon={faShoppingCart} onClick={addProductCart}>Adicionar</Button>
       </Card>
     </>
   );
@@ -32,8 +32,8 @@ const ProductCard = ({ id, photo, name, price, ...props }) => {
 ProductCard.propTypes = {
   id: PropTypes.number.isRequired,
   photo: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
-  price: PropTypes.number.isRequired
+  title: PropTypes.string.isRequired,
+  unit_price: PropTypes.number.isRequired
 };
 
 export default ProductCard;

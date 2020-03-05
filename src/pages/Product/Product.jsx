@@ -50,16 +50,16 @@ const Product = () => {
       {!loading ? (
         <ProductGrid>
           <Photo>
-            <img src={product.photo} alt={product.name} />
+            <img src={product.photo} alt={product.title} />
           </Photo>
           <ProductInfo>
-            <Title>{product.name}</Title>
+            <Title>{product.title}</Title>
             <PriceBox>
               <Price>
-                {numeral(product.price).format('$0,0.00')}
+                {numeral(product.unit_price).format('$0,0.00')}
               </Price>
               <Installments>
-                em até <span>12x</span> de <span>{numeral(product.price / 12).format('$0,0.00')}</span>
+                em até <span>12x</span> de <span>{numeral(product.unit_price / 12).format('$0,0.00')}</span>
               </Installments>
             </PriceBox>
             <Button icon={faShoppingCart} block large onClick={addProductCart}>Comprar</Button>

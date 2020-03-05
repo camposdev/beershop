@@ -1,8 +1,22 @@
 import React from 'react';
-import { StyledInput } from './styled';
+import PropTypes from 'prop-types';
+import { Wrapper, Label, StyledInput } from './styled';
 
-const TextField = (props) => (
-  <StyledInput type="text" {...props} />
+const TextField = ({ label, id, ...props }) => (
+  <Wrapper>
+    {label && <Label htmlFor={id}>{label}</Label>}
+    <StyledInput type="text" id={id} {...props} />
+  </Wrapper>
 );
+
+TextField.propTypes = {
+  label: PropTypes.string,
+  id: PropTypes.string
+};
+
+TextField.defaultProps = {
+  label: null,
+  id: null
+};
 
 export default TextField;

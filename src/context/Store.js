@@ -8,6 +8,7 @@ const initialState = {
 
 const Store = ({ children }) => {
   const [state, dispatch] = useReducer(Reducer, initialState);
+  console.log(state);
   return (
     <Context.Provider value={[state, dispatch]}>
       {children}

@@ -12,13 +12,15 @@ const Button = ({ icon, children, ...props }) => (
 Button.propTypes = {
   icon: PropTypes.oneOfType([PropTypes.object]),
   large: PropTypes.bool,
-  block: PropTypes.bool
+  block: PropTypes.bool,
+  secondary: PropTypes.bool,
 };
 
 Button.defaultProps = {
   icon: null,
   large: false,
-  block: false
+  block: false,
+  secondary: false
 };
 
 export default Button;
