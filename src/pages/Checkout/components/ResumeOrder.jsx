@@ -25,7 +25,7 @@ const ResumeOrder = () => {
   return (
     <>
       <Heading sub>Resumo do pedido</Heading>
-      <ShoppingCartList />
+      <ShoppingCartList style={{ maxHeight: '100%' }} />
       <CheckoutTotal>
         Total {numeral(totalPrice).format('$0,0.00')}
       </CheckoutTotal>

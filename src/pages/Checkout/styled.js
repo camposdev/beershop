@@ -10,6 +10,7 @@ export const CheckoutGrid = styled.div`
   ${theme('breakpoint.md')} {
     flex-direction: row;
     align-self: flex-start;
+    align-items: flex-start;
   }
 `;
 

@@ -59,4 +59,13 @@ export const StyledButton = styled.button`
     margin-right: ${({ hasChildren }) => hasChildren && '10px'};
     font-size: ${rem(14)};
   }
+
+  &:disabled {
+    opacity: 0.7;
+    background: linear-gradient(to right,  ${theme('palette.primary.300')}, ${theme('palette.secondary.300')});
+    color: ${theme('palette.white')};
+    box-shadow: none;
+    border: none;
+    cursor: not-allowed;
+  }
 `;
