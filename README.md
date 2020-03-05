@@ -40,7 +40,5 @@ REACT_APP_PAGARME_API_KEY=<API_KEY>
 
 ### TODO
 
-```
 - Validate forms
 - Unit tests
-```
