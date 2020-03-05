@@ -2,6 +2,8 @@
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/88b65283-f91c-4e7d-afff-35bc41ae23c3/deploy-status)](https://app.netlify.com/sites/lucid-golick-039089/deploys)
 
+https://beershop.netlify.com/
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
@@ -34,4 +36,11 @@ Add a `.env` in your environment and add the Api key:
 
 ```
 REACT_APP_PAGARME_API_KEY=<API_KEY>
+```
+
+### TODO
+
+```
+- Validate forms
+- Unit tests
 ```
