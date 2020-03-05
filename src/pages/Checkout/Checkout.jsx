@@ -1,10 +1,11 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { useHistory, Switch, Route, useRouteMatch, useLocation } from 'react-router-dom';
-import * as pagarme from '../../services/pagarme';
+import { createTransaction } from '../../services/pagarme';
 import Container from '../../components/Container';
 import Heading from '../../components/Heading';
 import { Context } from '../../context/Store';
 import EmptyState from '../../components/EmptyState';
+import Loading from '../../components/Loading';
 import CustomerForm from './components/CustomerForm';
 import PaymentForm from './components/PaymentForm';
 import ResumeOrder from './components/ResumeOrder';
@@ -15,7 +16,8 @@ const Checkout = () => {
   const [customerData, setCustomerData] = useState({});
   const [billingData, setBillingData] = useState({});
   const [totalPrice, setTotalPrice] = useState(null);
-  const [store] = useContext(Context);
+  const [showLoading, setShowLoading] = useState(false);
+  const [store, dispatch] = useContext(Context);
   const { path, url } = useRouteMatch();
   const history = useHistory();
   const { key } = useLocation();
@@ -68,7 +70,7 @@ const Checkout = () => {
       const product = {
         ...item,
         id: item.id.toString(),
-        unit_price: parseInt(item.unit_price.toString().replace('.', ''), 10),
+        unit_price: item.unit_price * 100,
         tangible: true
       };
       delete product.photo;
@@ -92,7 +94,7 @@ const Checkout = () => {
     ];
 
     const transactionBody = {
-      amount: totalPrice.toFixed(2).replace('.', ''),
+      amount: totalPrice * 100,
       ...creditCard,
       customer,
       billing,
@@ -100,11 +102,17 @@ const Checkout = () => {
       split_rules
     };
 
-    pagarme.createTransaction(transactionBody)
+    setShowLoading(true);
+    createTransaction(transactionBody)
       .then(transaction => {
-        console.log(transaction);
+        setShowLoading(false);
+        dispatch({ type: 'CLEAN_PRODUCTS_CART' });
+        history.push(`/success-order/${transaction.id}`);
       })
-      .catch(exception => console.error(exception.response));
+      .catch(exception => {
+        console.error(exception.response);
+        setShowLoading(false);
+      });
   };
 
   useEffect(() => {
@@ -135,9 +143,6 @@ const Checkout = () => {
             <Route path={`${path}/payment`}>
               <PaymentForm onSubmit={submitPayment} />
             </Route>
-            <Route path={`${path}/finish`}>
-              <h1>Finish</h1>
-            </Route>
           </Switch>
 
           <CheckoutAside>
@@ -147,6 +152,7 @@ const Checkout = () => {
       ) : (
         <EmptyState>Seu carrinho está vazio.</EmptyState>
       )}
+      {showLoading && <Loading fullscreen />}
     </Container>
   );
 };

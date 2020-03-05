@@ -16,6 +16,7 @@ import Product from './pages/Product';
 import Store from './context/Store';
 import Cart from './pages/Cart';
 import Checkout from './pages/Checkout';
+import SuccessOrder from './pages/SuccessOrder';
 
 const App = () => (
   <ThemeProvider theme={theme}>
@@ -32,6 +33,7 @@ const App = () => (
           <Route path="/product/:id" component={Product} />
           <Route path="/cart" component={Cart} />
           <Route path="/checkout" component={Checkout} />
+          <Route path="/success-order/:id" component={SuccessOrder} />
           <Route path="*">
             <Redirect to="/" />
           </Route>

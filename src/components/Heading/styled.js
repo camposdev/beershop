@@ -15,10 +15,10 @@ export const StyledHeading = styled.h2`
     position: absolute;
     width: ${rem(42)};
     height: ${rem(4)};
-    margin-left: -${rem(2)};
+    margin-left: -${ifProp('center', rem(21), '2')};
     top: inherit;
     bottom: -${rem(4)};
-    left: 0;
+    left: ${ifProp('center', '50%', '0')};
     background: linear-gradient(to right, ${theme('palette.primary.300')}, ${theme('palette.secondary.300')});
   }
 `;

@@ -8,8 +8,18 @@ export const StyledLoading = styled.div`
   justify-content: center;
   padding: 30px;
 
+  ${({ fullscreen }) => fullscreen && `
+    position: fixed;
+    z-index: 9;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255,255,255,0.8);
+  `}
+
   svg {
-    color: ${theme('palette.dark.100')};
+    color: ${theme('palette.primary.300')};
     font-size: ${rem(60)};
   }
 `;

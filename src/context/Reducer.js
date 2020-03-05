@@ -1,4 +1,4 @@
-import { updateLocalCart } from '../services/shoppingCart';
+import { updateLocalCart, deleteLocalCart } from '../services/shoppingCart';
 
 const updateCartList = (items, newItem) => {
   let isDuplicate = false;
@@ -41,6 +41,11 @@ const removeProductCart = (items, removedItem) => {
   return updatedList;
 };
 
+const cleanProductCart = () => {
+  deleteLocalCart();
+  return [];
+};
+
 const Reducer = (state, action) => {
   switch (action.type) {
     case 'ADD_PRODUCT_CART':
@@ -57,6 +62,11 @@ const Reducer = (state, action) => {
       return {
         ...state,
         cart: removeProductCart(state.cart, action.payload)
+      };
+    case 'CLEAN_PRODUCTS_CART':
+      return {
+        ...state,
+        cart: cleanProductCart()
       };
     default:
       return state;
